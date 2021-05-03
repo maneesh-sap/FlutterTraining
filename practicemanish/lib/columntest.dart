@@ -16,6 +16,7 @@ class MyHome extends StatefulWidget {
 }
 
 class _MyHomeState extends State<MyHome> {
+  String email, name, password, massage = "";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,37 +26,49 @@ class _MyHomeState extends State<MyHome> {
         body: (Column(
           children: [
             TextField(
-              onChanged: (value) {
-                print(value);
+              onSubmitted: (value) {
+                setState(() {
+                  name = value;
+                  massage = massage + value;
+                });
               },
+              keyboardType: TextInputType.emailAddress,
               decoration: InputDecoration(
                   hintText: "Enter Your Email",
                   labelText: "xyz@email.com",
-                  enabledBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: Colors.yellow))),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(5))),
             ),
             TextField(
-              onChanged: (value) {
-                print(value);
+              onSubmitted: (value) {
+                setState(() {
+                  email = value;
+                  massage = massage + value;
+                });
+                // print(value);
               },
+              keyboardType: TextInputType.text,
               decoration: InputDecoration(
                   hintText: "Enter Your Password",
                   labelText: "abcd123!@#",
-                  enabledBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: Colors.yellow))),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(5))),
             ),
             TextField(
-              onChanged: (value) {
-                print(value);
+              onSubmitted: (value) {
+                setState(() {
+                  password = value;
+                  massage = massage + value;
+                });
               },
               decoration: InputDecoration(
                   hintText: "Enter Your Name",
                   labelText: "Capital Letter",
-                  enabledBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: Colors.yellow))),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(5))),
             ),
 
-            // Text("This is Practice App Body"),
+            Text(massage),
             // Text("This is Practice App Body"),
             // Text("This is Practice App Body"),
             Row(
