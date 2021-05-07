@@ -17,6 +17,27 @@ class MyHome extends StatefulWidget {
 
 class _MyHomeState extends State<MyHome> {
   String email, name, password, massage = "";
+  TextEditingController emailcontroller = TextEditingController();
+  TextEditingController namecontroller = TextEditingController();
+  TextEditingController passwordcontroller = TextEditingController();
+  void reset() {
+    setState(() {
+      emailcontroller.text = "";
+      namecontroller.text = "";
+      passwordcontroller.text = "";
+    });
+  }
+
+  void submit() {
+    setState(() {
+      String myname = namecontroller.text;
+      String myemail = emailcontroller.text;
+      String mypassword = passwordcontroller.text;
+
+      massage = "$myname $myemail $mypassword";
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,12 +47,7 @@ class _MyHomeState extends State<MyHome> {
         body: (Column(
           children: [
             TextField(
-              onSubmitted: (value) {
-                setState(() {
-                  name = value;
-                  massage = massage + value;
-                });
-              },
+              controller: namecontroller,
               keyboardType: TextInputType.emailAddress,
               decoration: InputDecoration(
                   hintText: "Enter Your Email",
@@ -40,13 +56,7 @@ class _MyHomeState extends State<MyHome> {
                       borderRadius: BorderRadius.circular(5))),
             ),
             TextField(
-              onSubmitted: (value) {
-                setState(() {
-                  email = value;
-                  massage = massage + value;
-                });
-                // print(value);
-              },
+              controller: passwordcontroller,
               keyboardType: TextInputType.text,
               decoration: InputDecoration(
                   hintText: "Enter Your Password",
@@ -55,12 +65,7 @@ class _MyHomeState extends State<MyHome> {
                       borderRadius: BorderRadius.circular(5))),
             ),
             TextField(
-              onSubmitted: (value) {
-                setState(() {
-                  password = value;
-                  massage = massage + value;
-                });
-              },
+              controller: namecontroller,
               decoration: InputDecoration(
                   hintText: "Enter Your Name",
                   labelText: "Capital Letter",
@@ -73,8 +78,8 @@ class _MyHomeState extends State<MyHome> {
             // Text("This is Practice App Body"),
             Row(
               children: [
-                RaisedButton(onPressed: null, child: Text("Reset")),
-                RaisedButton(onPressed: null, child: Text("Submit"))
+                RaisedButton(onPressed: reset, child: Text("Reset")),
+                RaisedButton(onPressed: submit, child: Text("Submit"))
               ],
             )
           ],
