@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:practicemanish/login.dart';
+import 'myinputfile.dart';
 
 class ColTestApp extends StatelessWidget {
   @override
@@ -20,6 +22,7 @@ class _MyHomeState extends State<MyHome> {
   TextEditingController emailcontroller = TextEditingController();
   TextEditingController namecontroller = TextEditingController();
   TextEditingController passwordcontroller = TextEditingController();
+
   void reset() {
     setState(() {
       emailcontroller.text = "";
@@ -44,46 +47,43 @@ class _MyHomeState extends State<MyHome> {
         appBar: AppBar(
           title: Text("MyFirstPracticeApp"),
         ),
-        body: (Column(
-          children: [
-            TextField(
-              controller: namecontroller,
-              keyboardType: TextInputType.emailAddress,
-              decoration: InputDecoration(
-                  hintText: "Enter Your Email",
-                  labelText: "xyz@email.com",
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(5))),
-            ),
-            TextField(
-              controller: passwordcontroller,
-              keyboardType: TextInputType.text,
-              decoration: InputDecoration(
-                  hintText: "Enter Your Password",
-                  labelText: "abcd123!@#",
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(5))),
-            ),
-            TextField(
-              controller: namecontroller,
-              decoration: InputDecoration(
-                  hintText: "Enter Your Name",
-                  labelText: "Capital Letter",
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(5))),
-            ),
+        body: (Login(
+                emailcontroller,
+                namecontroller,
+                passwordcontroller,
+                "hint1",
+                "hint2",
+                "hint3",
+                "label1",
+                "label2",
+                "label3",
+                TextInputType.text,
+                TextInputType.text,
+                TextInputType.text,
+                massage,
+                reset,
+                submit)
 
-            Text(massage),
-            // Text("This is Practice App Body"),
-            // Text("This is Practice App Body"),
-            Row(
-              children: [
-                RaisedButton(onPressed: reset, child: Text("Reset")),
-                RaisedButton(onPressed: submit, child: Text("Submit"))
-              ],
-            )
-          ],
-        )));
+            //   Column
+            // (
+            //   children: [
+            //     MyInputField(namecontroller, "Enter Your Name", "Manish", TextInputType.text ),
+            //     MyInputField(namecontroller, "Enter Your Email", "xyz@gmail.com", TextInputType.text ),
+            //     MyInputField(namecontroller, "Enter Your Password", "abcd123!@#", TextInputType.text ),
+
+            //     Text(massage),
+            //     // Text("This is Practice App Body"),
+            //     // Text("This is Practice App Body"),
+
+            //     Row(
+            //       children: [
+            //         RaisedButton(onPressed: reset, child: Text("Reset")),
+            //         RaisedButton(onPressed: submit, child: Text("Submit"))
+            //       ],
+            //     )
+            //   ],
+            // )
+            ));
     // Text("This is Practice App Body")
   }
 }
