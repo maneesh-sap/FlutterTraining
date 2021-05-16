@@ -3,12 +3,19 @@ import 'package:practicemanish/login.dart';
 import 'package:practicemanish/screen2.dart';
 import 'myinputfile.dart';
 
-class ColTestApp extends StatelessWidget {
+class NavigationApp2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "MyApp",
-      home: MyHome(),
+      routes: {
+        '/': (context) {
+          return NavigationApp2();
+        },
+        "/Second": (context) {
+          return Screen2();
+        }
+      },
     );
   }
 }
@@ -30,9 +37,7 @@ class _MyHomeState extends State<MyHome> {
     //   namecontroller.text = "";
     //   passwordcontroller.text = "";
     // });
-    Navigator.push(context, MaterialPageRoute(builder: (context) {
-      return Screen2();
-    }));
+    Navigator.pushNamed(context, "/Second");
   }
 
   void submit() {

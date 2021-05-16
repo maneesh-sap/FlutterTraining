@@ -15,13 +15,15 @@ class MyInputField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return Container(child: Padding(padding: EdgeInsets.all(10), child: TextField(
       controller: controller,
       keyboardType: keyboardtype,
       decoration: InputDecoration(
           hintText: hint,
           labelText: label,
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
-    );
+    ),
+
+  ),margin: EdgeInsets.only(top: 10,bottom: 10),);
   }
 }
